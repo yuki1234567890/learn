@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>登録確認画面</title>
+</head>
+<body>
+<form method="post" th:action="@{/send}" th:object="${userForm}">
+    <p>入力内容確認</p>
+    <p th:text="'名前： ' + *{name}"></p>
+    <p th:text="'性別： ' + *{getSexItems().get('__*{sex}__')}"></p>
+    <input type="submit" name="next" value="送信" />
+    <input type="submit" name="backTop" value="戻る" />
+</form>
+</body>
+</html>
