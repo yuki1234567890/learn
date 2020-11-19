@@ -19,9 +19,6 @@ public class DemoServiceImpl implements DemoService{
     @Autowired
     private UserInfoMapper mapper;
 
-    /**
-     *
-     */
     @Override
     public List<UserForm> demoFormList(UserForm userForm) {
         List<UserForm> demoFormList = new ArrayList<>();
@@ -34,9 +31,9 @@ public class DemoServiceImpl implements DemoService{
     }
 
     /**
-     * DemoFormオブジェクトに引数のユーザーデータの各値を設定する
+     * UserInfoオブジェクトに引数のユーザーデータの各値を設定する
      * @param userInfo ユーザー情報
-     * @return DemoFormオブジェクト
+     * @return UserInfoオブジェクト
      */
     private UserForm getDemoForm(UserInfo userInfo){
         if(userInfo == null){
@@ -51,16 +48,16 @@ public class DemoServiceImpl implements DemoService{
 
     @Override
     public void create(UserForm userForm){
-        //更新・追加処理を行うエンティティを生成
+        //追加処理を行うエンティティを生成
         UserInfo userInfo = getUserData(userForm);
-        //追加・更新処理
+        //追加処理
         userInfo.setId(String.valueOf(Integer.parseInt(mapper.findMaxId()) + 1));
         mapper.createRegisterForm(userInfo);
     }
 
     /**
-     * UserDataオブジェクトに引数のフォームの各値を設定する
-     * @param demoForm DemoFormオブジェクト
+     * UserInfoオブジェクトに引数のフォームの各値を設定する
+     * @param userForm UserInfoオブジェクト
      * @return ユーザーデータ
      */
     private UserInfo getUserData(UserForm userForm){

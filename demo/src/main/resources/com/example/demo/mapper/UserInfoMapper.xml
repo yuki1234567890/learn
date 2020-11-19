@@ -3,16 +3,19 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserInfoMapper">
-	<select id="findBySearchForm" parameterType="com.example.demo.form.UserForm" resultType="com.example.demo.entity.UserInfo">
+	<select id="findBySearchForm"
+		parameterType="com.example.demo.form.UserForm"
+		resultType="com.example.demo.entity.UserInfo">
 		SELECT u.id, u.name, u.sex FROM userinfo u
-		<if test="(id != null and id != '') or (name != null and name != '') or (sex != null and sex != '')">
+		<if
+			test="(id != null and id != '') or (name != null and name != '') or (sex != null and sex != '')">
 			WHERE
 		</if>
 		<if test="id != null and id != ''">
 			u.id = #{id}
 		</if>
 		<if test="name != null and name != ''">
-            <if test="id == null or id == ''">
+			<if test="id == null or id == ''">
 				u.name like '%${name}%'
 			</if>
 			<if test="id != null and id != ''">
@@ -20,25 +23,27 @@
 			</if>
 		</if>
 		<if test="sex != null and sex != ''">
-            <if test="(id == null or id == '') and (name == null or name == '')">
+			<if
+				test="(id == null or id == '') and (name == null or name == '')">
 				u.sex = #{sex}
 			</if>
-			<if test="(id != null and id != '') or (name != null and name != '')">
+			<if
+				test="(id != null and id != '') or (name != null and name != '')">
 				AND u.sex = #{sex}
 			</if>
 		</if>
-        ORDER BY u.id
-    </select>
+		ORDER BY u.id
+	</select>
 
 
-	<select id="createRegisterForm" parameterType="com.example.demo.form.UserForm" resultType="com.example.demo.entity.UserInfo">
-INSERT INTO userinfo ( id, name,  sex )
-        VALUES (#{id}, #{name}, #{sex})
-    </select>
+	<select id="createRegisterForm" parameterType="com.example.demo.form.UserForm" 	resultType="com.example.demo.entity.UserInfo">
+		INSERT INTO userinfo ( id, name, sex ) VALUES (#{id}, #{name}, #{sex})
+	</select>
 
-    <select id="findMaxId" resultType="string">
-        SELECT COALESCE(max(id), 0) FROM userinfo
-    </select>
+	<select id="findMaxId" resultType="string">
+		SELECT COALESCE(max(id), 0) FROM userinfo
+	</select>
+
 </mapper>
 
 
