@@ -87,33 +87,6 @@ public class DemoController {
     }
 
     /**
-     * 検索画面からトップ画面に戻る
-     * @return 検索画面へのパス
-     */
-    @PostMapping(value = "/search_result", params = "backTop")
-    public String addTopBack(){
-        return "top";
-    }
-
-    /**
-     * 検索画結果面から検索画面に戻る
-     * @return 検索画面へのパス
-     */
-    @PostMapping(value = "", params = "backSearch")
-    public String addSearchBack(){
-        return "search";
-    }
-
-    /**
-     * 登録画面からトップ画面に戻る
-     * @return トップ画面へのパス
-     */
-    @PostMapping(value = "/confirm", params = "backTop")
-    public String addTopBackConfirm(){
-        return "top";
-    }
-
-    /**
      * 検索処理を行い、一覧画面に遷移する
      * @param searchForm 検索用Formオブジェクト
      * @param model Modelオブジェクト
@@ -150,7 +123,7 @@ public class DemoController {
      */
     @PostMapping(value = "/send", params = "next")
     public String send(UserForm userForm, BindingResult result){
-        //チェック処理を行い、エラーがなければ、更新・追加処理を行う
+        //追加処理を行う
         demoService.create(userForm);
         return "complete";
     }

@@ -2,13 +2,10 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>完了画面</title>
+    <title>登録完了画面</title>
 </head>
 <body>
-　　 完了しました。<br/><br/>
-
-<form method="post" th:action="@{/}">
-    <input type="submit" value="トップに戻る" />
-</form>
+    <p>ユーザの登録が完了しました。</p>
+    <input type="button" onclick="history.go(-3)" value="トップに戻る" />
 </body>
 </html>

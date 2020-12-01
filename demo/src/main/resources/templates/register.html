@@ -5,16 +5,14 @@
     <title>登録画面</title>
 </head>
 <body>
-	<form method="post" action="/confirm" th:object="${userForm}">
-		名前：　<input type="text" th:value="*{name}" th:field="*{name}" />
-		</br>
-		性別：
-    <for th:each="item : *{getSexItems()}">
-        <input type="radio" name="sex" th:value="${item.key}" th:text="${item.value}" th:field="*{sex}" />
-    </for>
-    <br/>
-    <input type="submit" name="next" value="確認" />
-    <input type="submit" name="backTop" value="トップに戻る" />
-	</form>
+    <form method="post" action="/confirm" th:object="${userForm}">
+        <p>名前：　<input type="text" th:value="*{name}" th:field="*{name}" /></p>
+        <p>性別：　<for th:each="item : *{getSexItems()}">
+                       <input type="radio" name="sex" th:value="${item.key}" th:text="${item.value}" th:field="*{sex}" />
+                   </for>
+        </p>
+        <input type="submit" name="next" value="確認" />
+        <input type="button" onclick="history.back()" value="戻る" />
+    </form>
 </body>
 </html>
