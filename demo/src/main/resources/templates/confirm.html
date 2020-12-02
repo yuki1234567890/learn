@@ -5,7 +5,7 @@
 <title>登録確認画面</title>
 </head>
 <body>
-<form method="post" th:action="@{/send}" th:object="${userForm}">
+<form method="post" th:action="@{/complete}" th:object="${userForm}">
     <p>入力内容確認</p>
     <p th:text="'名前： ' + *{name}"></p>
     <p th:text="'性別： ' + *{getSexItems().get('__*{sex}__')}"></p>

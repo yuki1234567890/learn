@@ -14,7 +14,7 @@ public interface  DemoService {
     List<UserForm> demoFormList(UserForm userForm);
 
     /**
-     * 引数のユーザーデータがあれば更新し、無ければ追加
+     * 引数のユーザーデータ追加
      * @param demoForm フォームオブジェクト
      */
     void create(UserForm userForm);

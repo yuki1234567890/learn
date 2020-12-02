@@ -121,7 +121,7 @@ public class DemoController {
      * @param result バインド結果
      * @return 完了画面
      */
-    @PostMapping(value = "/send", params = "next")
+    @PostMapping(value = "/complete", params = "next")
     public String send(UserForm userForm, BindingResult result){
         //追加処理を行う
         demoService.create(userForm);
