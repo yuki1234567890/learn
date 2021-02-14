@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>登録画面</title>
+	<meta charset="UTF-8">
+	<title>登録画面</title>
 </head>
 <body>
-    <form method="post" action="/confirm" th:object="${userForm}">
-        <p>名前：　<input type="text" th:value="*{name}" th:field="*{name}" /></p>
-        <p>性別：　<for th:each="item : *{getSexItems()}">
-                       <input type="radio" name="sex" th:value="${item.key}" th:text="${item.value}" th:field="*{sex}" />
-                   </for>
-        </p>
-        <input type="submit" name="next" value="確認" />
-        <input type="button" onclick="history.back()" value="戻る" />
-    </form>
+	<form method="post" action="/confirm" th:object="${userForm}">
+
+		 <ul>
+			<li th:each="error : ${#fields.detailedErrors()}" style="color: red">
+				<span th:text="${error.message}"></span>
+			</li>
+		</ul>
+
+		<p>名前：　<input type="text" th:value="*{name}" th:field="*{name}" /></p>
+		<p>性別：　<for th:each="item : *{getSexItems()}">
+					   <input type="radio" name="sex" th:value="${item.key}" th:text="${item.value}" th:field="*{sex}" />
+				   </for>
+		<p>生年月日：　<input type="text" th:value="*{dob}" th:field="*{dob}" maxlength="8"/></p>
+		</p>
+		<input type="submit" name="next" value="確認" />
+		<input type="button" onclick="location.href='./'" value="戻る" />
+	</form>
 </body>
 </html>

@@ -11,6 +11,9 @@ public class UserInfo {
     /** 性別 */
     private String sex;
 
+    /** 生年月日 */
+    private String dob;
+
     public String  getId() {
         return id;
     }
@@ -34,4 +37,12 @@ public class UserInfo {
     public void setSex(String sex) {
         this.sex = sex;
     }
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
 }

@@ -43,6 +43,7 @@ public class DemoServiceImpl implements DemoService{
         demoForm.setId(String.valueOf(userInfo.getId()));
         demoForm.setName(userInfo.getName());
         demoForm.setSex(userInfo.getSex());
+        demoForm.setDob(userInfo.getDob());
         return demoForm;
     }
 
@@ -64,6 +65,7 @@ public class DemoServiceImpl implements DemoService{
     	UserInfo userInfo = new UserInfo();
         userInfo.setName(userForm.getName());
         userInfo.setSex(userForm.getSex());
+        userInfo.setDob(userForm.getDob());
         return userInfo;
     }
 }

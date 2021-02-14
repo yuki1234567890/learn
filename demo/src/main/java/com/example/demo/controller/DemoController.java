@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,6 +56,7 @@ public class DemoController {
     	userForm.setId(null);
     	userForm.setName(null);
     	userForm.setSex(null);
+    	userForm.setDob(null);
     	model.addAttribute("userForm",userForm);
         return "top";
     }
@@ -110,8 +112,11 @@ public class DemoController {
      * @return 確認画面または入力画面へのパス
      */
     @PostMapping(value = "/confirm", params = "next")
-    public String confirm(UserForm userForm, BindingResult result){
+    public String confirm(@Validated UserForm userForm, BindingResult result){
         //チェック処理を行い、画面遷移する
+		if (result.hasErrors()) {
+			return "register";
+		}
         return "confirm";
     }
 

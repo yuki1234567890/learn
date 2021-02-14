@@ -6,9 +6,9 @@
 	<select id="findBySearchForm"
 		parameterType="com.example.demo.form.UserForm"
 		resultType="com.example.demo.entity.UserInfo">
-		SELECT u.id, u.name, u.sex FROM userinfo u
+		SELECT u.id, u.name, u.sex, u.dob FROM userinfo u
 		<if
-			test="(id != null and id != '') or (name != null and name != '') or (sex != null and sex != '')">
+			test="(id != null and id != '') or (name != null and name != '') or (sex != null and sex != '') or (dob != null and dob != '')">
 			WHERE
 		</if>
 		<if test="id != null and id != ''">
@@ -32,12 +32,22 @@
 				AND u.sex = #{sex}
 			</if>
 		</if>
+		<if test="dob != null and dob != ''">
+			<if
+				test="(id == null or id == '') and (name == null or name == '') and (sex == null or sex == '')">
+				u.dob = #{dob}
+			</if>
+			<if
+				test="(id != null and id != '') or (name != null and name != '') or (sex != null and sex != '')">
+				AND u.dob = #{dob}
+			</if>
+		</if>
 		ORDER BY u.id
 	</select>
 
 
 	<select id="createRegisterForm" parameterType="com.example.demo.form.UserForm" 	resultType="com.example.demo.entity.UserInfo">
-		INSERT INTO userinfo ( id, name, sex ) VALUES (#{id}, #{name}, #{sex})
+		INSERT INTO userinfo ( id, name, sex, dob ) VALUES (#{id}, #{name}, #{sex}, #{dob})
 	</select>
 
 	<select id="findMaxId" resultType="string">
